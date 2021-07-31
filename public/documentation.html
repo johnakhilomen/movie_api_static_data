@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Documentation</title>
+</head>
+<body>
+    <header>
+      <h1>Title of API:Flicks At Clicks!</h1><br>
+    </header>
+
+     <h2>Description: A REST API for an application that interacts with a database that stores data for different movies</h2><br>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Request</th>
+                <th>URL</th>
+                <th>Method</th>
+                <th>Query Parameters</th>
+                <th>Request body data format</th>
+                <th>Response body data format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Return a list of all the movies to the user</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object holding all the data about all the movies</td>
+            </tr>
+            <tr>
+                <td>Return data about a single movie by title to the user</td>
+                <td>/movies/[title]</td>
+                <td>GET</td>
+                <td>:title</td>
+                <td>None</td>
+                <td>A JSON object holding all the data about a single movie. Example:<br>
+                    {
+                        title: 'Inception',
+                        director: 'Christopher Nolan',
+                        genre: 'Sci-Fi'
+                      }      
+                </td>
+            </tr>
+            <tr>
+                <td>Return data about a genre by name</td>
+                <td>movies/genre/[genre]</td>
+                <td>GET</td>
+                <td>:genre</td>
+                <td>None</td>
+                <td>A JSON object format containing movies belonging to a specific genre. Example: <br>
+                    {
+                        title: 'Shutter-Island',
+                        director: 'Martin Scorsese',
+                        genre: 'Suspense-Thriller'
+                      } <br>
+                    {
+                          title: 'The Fugitive',
+                          director: 'Andrew Davis',
+                          genre: 'Suspense-Thriller'
+                      }
+                </td>
+            </tr>
+            <tr>
+                <td>Return data about a director by name</td>
+                <td>/movies/director/[director]</td>
+                <td>GET</td>
+                <td>:director</td>
+                <td>None</td>
+                <td>A JSON format data holding all the data about a director by name. Example:<br>
+                    {
+                        name: 'Christopher Nolan',
+                        bio: 'A short Bio',
+                        dob: '30th July'
+                      }
+                    </td>
+            </tr>
+
+            <tr>
+                <td>Allow users to add a movie to their list of favorites</td>
+                <td>/favourite/add/[id]/[title]</td>
+                <td>POST</td>
+                <td>:add</td>
+                <td>A JSON format data containing all the new data about the movie to be added. Example:<br>
+                    {
+                    title: 'Wrath Of Man',
+                    director: 'Guy Ritchie',
+                    genre: 'Action-Thriller'
+                    }
+                </td>
+                <td>A JSON format data containing the newly added movie details. <br>
+                    {
+                        "id": 1,
+                        "fullname": "John Doe",
+                        "email": "johndoe@mail.com",
+                        "favMovies": [
+                            {
+                                "title": "Inception",
+                                "director": "Christopher Nolan",
+                                "genre": "Sci-Fi"
+                            },
+                            {
+                                "title": "Wrath Of Man",
+                                "director": "Guy Ritchie",
+                                "genre": "Action-Thriller"
+                            }
+                        ]
+                    }
+                
+                </td>
+            </tr>
+
+            <tr>
+                <td>Allow new users to register</td>
+                <td>/users/register</td>
+                <td>POST</td>
+                <td>:register</td>
+                <td>Data containing new user details</td>
+                <td>A text response indicating that the registeration was successful</td>
+            </tr>
+
+            <tr>
+                <td>Allow users to update their user info</td>
+                <td>/users/update/[id]]</td>
+                <td>PUT</td>
+                <td>:id</td>
+                <td>Data containing changes to old profile</td>
+                <td>A text response indicating that the changes were successfully deployed</td>
+            </tr>
+
+            <tr>
+                <td>Allow users to remove a movie from their list of favorites</td>
+                <td>/favourite/delete/[id]/[title]</td>
+                <td>DELETE</td>
+                <td>:id, :title</td>
+                <td>None</td>
+                <td>An array without the removed movie</td>
+            </tr>
+
+            <tr>
+                <td>Allow existing users to deregister</td>
+                <td>/users/deregister/[id]</td>
+                <td>DELETE</td>
+                <td>:id</td>
+                <td>None</td>
+                <td>A text response indicating that the user profile was successfully deregistered</td>
+            </tr>  
+        </tbody>
+    </table>
+</body>
+</html>
+
