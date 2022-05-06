@@ -57,9 +57,7 @@ app.get('/users', (req, res) => {
 //For allowing users to update their user info
 app.put('/users/update/:id', (req, res) => {
   let userId =  users.findIndex((u)=>u.id==req.params.id);
-  users.slice(userId,1, {...req.body});
-  res.send('Changes saved successfully!');
-  res.send(users);
+  res.send(users.slice(userId,1, {...req.body}));
 });
 
 //For allowing users to add a movie to their list of favorite movies
@@ -79,8 +77,7 @@ app.delete('/favourite/delete/:id/:title', (req, res) => {
 
 //For allowing existing users to deregister-text
 app.delete('/users/deregister/:id', (req, res) => {
-  users.filter((m) => m.id !=req.params.id);
-  res.send('User details successfully removed!')
+  res.send(users.filter((m) => m.id !=req.params.id))
 });
 
 //Listening requests
